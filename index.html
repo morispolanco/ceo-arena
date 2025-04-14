@@ -260,6 +260,7 @@
             reputation: [60],
             morale: [75]
         };
+        let usedScenarios = new Set(); // Conjunto para almacenar escenarios usados
         
         // Mostrar sección
         function showSection(sectionId) {
@@ -464,15 +465,21 @@
                 }
                 `;
                 
-                const response = await callGeminiAPI(prompt);
-                currentScenario = JSON.parse(response);
+                let response;
+                let newScenario;
+                do {
+                    response = await callGeminiAPI(prompt);
+                    newScenario = JSON.parse(response);
+                } while (usedScenarios.has(newScenario.titulo));
                 
+                usedScenarios.add(newScenario.titulo);
+                currentScenario = newScenario;
                 displayScenario(currentScenario);
                 return currentScenario;
             } catch (error) {
                 console.error('Error al generar el escenario:', error);
                 // Array de escenarios predefinidos
-                const scenarios = [
+                const predefinedScenarios = [
                     {
                         "titulo": "Crisis de Ciberseguridad",
                         "descripcion": "Se ha detectado una brecha de seguridad en los sistemas principales de la empresa. Datos de clientes podrían haber sido comprometidos. La noticia aún no ha salido a la luz pública, pero es cuestión de tiempo antes de que alguien lo descubra.",

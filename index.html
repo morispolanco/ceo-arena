@@ -243,7 +243,10 @@
         </div>
     </section>
 
-    <script>
+    <script type="module">
+        import { callGeminiAPI } from './config.js';
+        import { generateScenario } from './generateScenario.js';
+
         // Variables globales
         let companyProfile = {};
         let companyState = {

@@ -247,6 +247,33 @@
         import { callGeminiAPI } from './config.js';
         import { generateScenario } from './generateScenario.js';
 
+        // Función para mostrar el perfil de la empresa
+        function displayCompanyProfile() {
+            const profileContainer = document.getElementById('company-profile');
+            profileContainer.innerHTML = `
+                <div class="space-y-3">
+                    <h4 class="font-semibold text-lg">${companyProfile.nombre}</h4>
+                    <p><span class="font-medium">Sector:</span> ${companyProfile.sector}</p>
+                    <p><span class="font-medium">Empleados:</span> ${companyProfile.empleados}</p>
+                    <p><span class="font-medium">Ingresos:</span> ${companyProfile.ingresos}</p>
+                    
+                    <div>
+                        <p class="font-medium">Productos/Servicios:</p>
+                        <ul class="list-disc list-inside ml-2">
+                            ${companyProfile.productos.map(p => `<li>${p}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <p class="font-medium">Equipo Directivo:</p>
+                        <ul class="list-disc list-inside ml-2">
+                            ${companyProfile.gerentes.map(g => `<li>${g}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `;
+        }
+
         // Variables globales
         let companyProfile = {};
         let companyState = {

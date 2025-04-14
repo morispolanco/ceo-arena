@@ -807,24 +807,34 @@
         
         // Reiniciar el juego
         function resetGame() {
+            // Reiniciar variables del juego
+            currentRound = 1;
+            usedScenarios = new Set();
             companyState = {
                 finances: 70,
                 reputation: 60,
                 morale: 75
             };
-            
-            currentRound = 1;
             historyData = {
                 finances: [70],
                 reputation: [60],
                 morale: [75]
             };
             
-            if (companyChart) {
-                companyChart.destroy();
-            }
+            // Actualizar UI
+            updateCompanyState();
+            updateChart();
+            document.getElementById('round-counter').textContent = '1';
+            document.getElementById('round-progress').style.width = '5%';
             
-            startGame();
+            // Generar nuevo perfil de empresa y escenario
+            generateCompanyProfile();
+            generateScenario();
+            
+            // Mostrar sección de juego
+            showSection('game');
+            document.getElementById('scenario-container').style.display = 'block';
+            document.getElementById('decision-result').style.display = 'none';
         }
         
         // Iniciar el juego

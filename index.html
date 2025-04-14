@@ -471,17 +471,72 @@
                 return currentScenario;
             } catch (error) {
                 console.error('Error al generar el escenario:', error);
-                // Escenario de respaldo
-                currentScenario = {
-                    "titulo": "Crisis de ciberseguridad",
-                    "descripcion": "Se ha detectado una brecha de seguridad en los sistemas principales de la empresa. Datos de clientes podrían haber sido comprometidos. La noticia aún no ha salido a la luz pública, pero es cuestión de tiempo antes de que alguien lo descubra.",
-                    "opciones": [
-                        {"id": 1, "texto": "Informar inmediatamente a los clientes y autoridades sobre la brecha"},
-                        {"id": 2, "texto": "Investigar internamente el alcance antes de hacer cualquier anuncio"},
-                        {"id": 3, "texto": "Contratar una empresa externa especializada en ciberseguridad para manejar la situación"},
-                        {"id": 4, "texto": "Minimizar el incidente y solucionarlo discretamente sin comunicación externa"}
-                    ]
-                };
+                // Array de escenarios predefinidos
+                const scenarios = [
+                    {
+                        "titulo": "Crisis de Ciberseguridad",
+                        "descripcion": "Se ha detectado una brecha de seguridad en los sistemas principales de la empresa. Datos de clientes podrían haber sido comprometidos. La noticia aún no ha salido a la luz pública, pero es cuestión de tiempo antes de que alguien lo descubra.",
+                        "opciones": [
+                            {"id": 1, "texto": "Informar inmediatamente a los clientes y autoridades sobre la brecha"},
+                            {"id": 2, "texto": "Investigar internamente el alcance antes de hacer cualquier anuncio"},
+                            {"id": 3, "texto": "Contratar una empresa externa especializada en ciberseguridad para manejar la situación"},
+                            {"id": 4, "texto": "Minimizar el incidente y solucionarlo discretamente sin comunicación externa"}
+                        ]
+                    },
+                    {
+                        "titulo": "Expansión Internacional",
+                        "descripcion": "La empresa tiene la oportunidad de expandirse a un nuevo mercado internacional. Los estudios de mercado son prometedores, pero la inversión inicial es significativa y los riesgos son considerables.",
+                        "opciones": [
+                            {"id": 1, "texto": "Realizar una entrada agresiva con una gran inversión inicial"},
+                            {"id": 2, "texto": "Comenzar con una entrada modesta y escalar gradualmente"},
+                            {"id": 3, "texto": "Buscar un socio local para una joint venture"},
+                            {"id": 4, "texto": "Posponer la expansión y fortalecer primero el mercado actual"}
+                        ]
+                    },
+                    {
+                        "titulo": "Innovación Tecnológica",
+                        "descripcion": "Un competidor ha lanzado un producto revolucionario que amenaza con hacer obsoleta nuestra línea principal de productos. Necesitamos tomar una decisión rápida sobre nuestra estrategia tecnológica.",
+                        "opciones": [
+                            {"id": 1, "texto": "Invertir fuertemente en I+D para desarrollar un producto superior"},
+                            {"id": 2, "texto": "Buscar adquirir una startup con tecnología competitiva"},
+                            {"id": 3, "texto": "Pivotear hacia un nuevo segmento de mercado menos amenazado"},
+                            {"id": 4, "texto": "Mantener el curso actual y reducir precios para mantener la cuota de mercado"}
+                        ]
+                    },
+                    {
+                        "titulo": "Crisis de Recursos Humanos",
+                        "descripcion": "Un grupo significativo de empleados clave está considerando dejar la empresa debido a la insatisfacción con las políticas actuales y la cultura organizacional.",
+                        "opciones": [
+                            {"id": 1, "texto": "Implementar un programa inmediato de retención con aumentos salariales"},
+                            {"id": 2, "texto": "Iniciar un proceso de transformación cultural y mejora del ambiente laboral"},
+                            {"id": 3, "texto": "Reestructurar los equipos y promover nuevo talento interno"},
+                            {"id": 4, "texto": "Mantener el curso actual y contratar nuevos talentos según sea necesario"}
+                        ]
+                    },
+                    {
+                        "titulo": "Desafío Ambiental",
+                        "descripcion": "Activistas ambientales han publicado un informe detallando el impacto negativo de nuestras operaciones en el medio ambiente. La presión pública y mediática está aumentando.",
+                        "opciones": [
+                            {"id": 1, "texto": "Anunciar un plan ambicioso de sostenibilidad con objetivos claros"},
+                            {"id": 2, "texto": "Implementar cambios graduales mientras se mantiene la rentabilidad"},
+                            {"id": 3, "texto": "Colaborar con ONGs ambientales para mejorar prácticas"},
+                            {"id": 4, "texto": "Defender las prácticas actuales y destacar los beneficios económicos"}
+                        ]
+                    },
+                    {
+                        "titulo": "Oportunidad de Fusión",
+                        "descripcion": "Un competidor importante ha propuesto una fusión que podría crear una empresa líder en el mercado. Sin embargo, hay preocupaciones sobre la integración cultural y posibles despidos.",
+                        "opciones": [
+                            {"id": 1, "texto": "Aceptar la fusión y comenzar la integración inmediatamente"},
+                            {"id": 2, "texto": "Negociar mejores términos antes de proceder"},
+                            {"id": 3, "texto": "Buscar otras alternativas estratégicas"},
+                            {"id": 4, "texto": "Rechazar la fusión y mantener la independencia"}
+                        ]
+                    }
+                ];
+                
+                // Seleccionar un escenario aleatorio
+                currentScenario = scenarios[Math.floor(Math.random() * scenarios.length)];
                 displayScenario(currentScenario);
                 return currentScenario;
             }

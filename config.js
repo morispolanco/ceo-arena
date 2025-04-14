@@ -1,3 +1,40 @@
+// Configuración del juego CEO Challenge
+export const config = {
+    // Configuración general del juego
+    game: {
+        totalScenarios: 20,
+        startingValues: {
+            finances: 70,
+            reputation: 60,
+            morale: 75
+        }
+    },
+    
+    // Rangos de impacto para las decisiones
+    impactRanges: {
+        finances: {
+            min: -40,
+            max: 20
+        },
+        reputation: {
+            min: -30,
+            max: 30
+        },
+        morale: {
+            min: -25,
+            max: 25
+        }
+    },
+    
+    // Umbrales para evaluación final
+    thresholds: {
+        excellent: 80,
+        good: 60,
+        average: 40,
+        poor: 20
+    }
+};
+
 // Configuración de la API de Google Gemini
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || '';
 
